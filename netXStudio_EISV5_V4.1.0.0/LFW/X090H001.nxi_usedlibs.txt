@@ -1,0 +1,47 @@
+Target:  X090H001.nxi
+Version: V5.4.0.2
+
+Used Libraries
+==============
+
+armv7em-ecoscentric-ecospro-eabi/7.3.0d
+---------------------------------------
+libauthentication_manager.a   V1.3.0.0  Auth Manager 
+libauthmgr_gci.a              V1.3.0.0  Auth Manager 
+libconfigmanager.a            V1.5.0.1  ConfigManager 
+libdbg_com.a                  V0.0.11.0 Debug toolbox implementation for netX90 com side (eCosPro)
+libdbg_com_printf.a           V0.0.11.0 Debug Toolbox printf wrapper for netX90 com side (eCosPro)
+libdrv_eth_2ps_netx90.a       V1.7.0.1  DrvEth Adapter 2PS netX90 
+libdrveth.a                   V1.12.0.2 DrvEth 
+libdrveth_gci.a               V1.3.0.0  DrvEth GCI 
+libdrvphy.a                   V1.2.0.2  DrvPhy 
+libeip_eif.a                  V3.8.0.5  Common EtherNet/IP Interface Library common library for netX 90
+libeip_gci_core.a             V3.8.0.5  EtherNetIP GCI core library for netX 90
+libeip_netx.a                 V3.8.0.5  EtherNet/IP 
+libfirmwaretoolbox.a          V1.2.0.0  FirmwareToolbox 
+libgeneric_ap.a               V1.4.1.0  Generic AP 
+libhal_toolbox.a              V1.7.0.0  HAL Toolbox 
+liblldp.a                     V5.4.0.3  LLDP 
+liblwip.a                     V5.2.0.6  lwIP based IP stack 
+liblwip_netident.a            V5.2.0.6  lwIP based IP stack 
+liblwip_ngsnmp.a              V5.2.0.6  lwIP based IP stack 
+liblwip_socketapigci.a        V5.2.0.6  lwIP based Socket API (GCI) 
+libmarshaller.a               V2.1.0.0  netX Marshaller 
+libmbedcrypto.a               V1.2.5.0  Hilscher mbedTLS 
+libmbedtls.a                  V1.2.5.0  Hilscher mbedTLS 
+libmbedx509.a                 V1.2.5.0  Hilscher mbedTLS 
+libmiddleware.a               V2.1.0.1  Middleware Library 
+libnetx_toolbox_netx90.a      V1.8.0.1  netX Toolbox 
+libosal_ecospro.a             V2.3.0.1  OSAL 
+libps_toolbox.a               V1.6.0.0  PS Toolbox 
+libptp_netx.a                 V2.4.0.1  PTP 
+libptp_platform_ecos_netx90.a V2.4.0.1  Precision Time Protocol library for netX90 (eCos dependent)
+libstorage.a                  V2.0.0.1  eCos Storage Library 
+libtarget.a                   V2.1.0.0  eCos  
+libwebifgci.a                 V1.5.0.7  HTTP WebIf GCI 
+libwebserver_configurations.a V1.5.0.7  HTTP Web Server Configurations 
+libwebserver_tls.a            V1.5.0.7  HTTP Web Server 
+
+Selected Environment variables
+==============================
+SPC_BUILDTOOLS_REV=SPC-BuildToolsRev.135

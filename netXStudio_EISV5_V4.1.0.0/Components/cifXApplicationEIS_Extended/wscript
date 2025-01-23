@@ -1,0 +1,53 @@
+def build(bld):
+    
+    toolchain = bld.env["UsedToolchain"]
+    platform  = bld.env["UsedPlatform"]
+    
+    comp_prefix = bld.get_name_prefix(
+        toolchain = toolchain,
+        platform  = platform)
+
+# Component cifXApplicationEIS ---------------------------------------------------------
+    netx_studio_sources = [
+        "Sources/AppEIS_Application.c",
+		"Sources/AppEIS_ApplicationFunctions.c",
+        ]
+
+    includes = [
+        "Includes",
+        ]
+
+    bld.stlib(
+        target          = "EISV5_extended",
+        name            = comp_prefix + "EISV5_extended",
+        description     = "cifX Application - EtherNet/IP V5 - Extended",
+        displaygroup    = "Libraries",
+        platform        = platform,
+        toolchain       = toolchain, 
+        use             = [
+                           "AuthMgrDefinitions_sdk",
+                           "Hil_Definition_cifXApi_sdk",
+                           "Hil_ProductCode_CIP_sdk",
+                           "EIPDefinitions_sdk",
+                           "Hil_Definition_netXFirmware_sdk",
+                           "hostabstractionlayer_sdk",
+                           "cifXApplication_sdk",
+                           "cifXToolkit_sdk",
+                           "cifXApplicationConfig_sdk",
+                           "netx_drv_configuration_sdk",
+                           "CMSIS_sdk",
+                          ],
+        source          = netx_studio_sources,
+        includes        = includes,
+        export_includes = includes,
+        defines         = [
+                           #"HOST_APPLICATION_SETS_MAC_ADDRESS",             # activate only, if firmware's taglist entry "DDP Mode after firmware startup" 
+                                                                             # is configured to "passive"
+                           #"HOST_APPLICATION_SETS_SERIAL_NUMBER",           # activate only, if firmware's taglist entry "DDP Mode after firmware startup" 
+                                                                             # is configured to "passive"
+                           #"HOST_APPLICATION_STORES_REMANENT_DATA",         # activate only, if firmware's taglist entry "AP task remanent data handling responsibility" 
+                                                                             # has the check mark for "Remanent Data stored by Host" set.
+                           #"HOST_APPLICATION_SETS_DEFAULT_SECURITY_CONFIG", # activate only, if a Default Security Configuration needs to be applied.
+                           #"SUPPORT_CIP_SYNC",
+                           ],
+    )

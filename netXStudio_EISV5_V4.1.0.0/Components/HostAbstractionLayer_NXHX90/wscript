@@ -1,0 +1,74 @@
+def build(bld):
+    
+    toolchain = bld.env["UsedToolchain"]
+    if not toolchain:
+        bld.fatal('Environment parameter "UsedToolchain" is not available! Make sure to provide the environment parameter "UsedToolchain" in the root wscript file of your project. e.g.: conf.env["UsedToolchain"] = "gccarmemb"')
+    
+    platform  = bld.env["UsedPlatform"]
+    if not platform:
+        bld.fatal('Environment parameter "UsedPlatform" is not available! Make sure to provide the environment parameter "UsedPlatform" in the root wscript file of your project. e.g.: conf.env["UsedPlatform"]  = "netx90"')
+    
+    comp_prefix = bld.get_name_prefix(
+        toolchain = toolchain,
+        platform  = platform)
+        
+# Component netx_HostAbstractionLayer -------------------------------------------------------------
+    netx_studio_sources = [
+        "Sources/netX_hostAbstractionLayer.c", 
+        "Sources/Watchdog_driver.c", 
+        "Sources/RTC.c",
+        "Sources/Shell.c",
+        "Sources/switch.c",
+        "Sources/led.c",
+        "Sources/Digital_Input.c",
+        "Sources/Digital_Output.c",
+        "Sources/Hal.c",
+        "Sources/i2c.c",
+        "Sources/SPI.c",
+        "Sources/diag.c",
+        "Sources/sys.c",
+        "Sources/Temp_Sensor.c",
+        "Sources/event_handler.c",        
+        "Sources/EIP/FiHandlers.c",
+        "Sources/EIP/Init.c",
+        "Sources/EIP/server.c",
+        "Sources/EIP/watchdog.c",
+        "Sources/EIP/cip_objects.c",
+        "Sources/FI/util_task.c",
+        "Sources/FI/mfg.c",
+        "Sources/FI/nvram.c",        
+        ]
+    
+    includes = [
+        "Includes",
+        "Includes/EIP",
+        "Includes/FI",
+        ]
+       
+    bld.stlib(
+        target          = "netx90_HostAbstractionLayer",
+        name            = comp_prefix + "netx90_HostAbstractionLayer",
+        description     = "Host abstraction layer for nxhx90-jtag application",
+        displaygroup    = "Libraries",
+        platform        = platform,
+        toolchain       = toolchain,
+        use             = [
+                           "cifXApplicationConfig_sdk",
+                           "hostabstractionlayer_sdk",
+                           "netx_drv_sdk",
+                           "Hil_Definition_netXFirmware_sdk",
+                           "Hil_Definition_cifXApi_sdk",
+                           "cifXToolkit_sdk",
+                           "cifXApplication_sdk",                           
+                           "EIPDefinitions_sdk",
+                          ],
+        source          = netx_studio_sources + ["Sources/Temp_Sensor.c"],
+        includes        = includes,
+        export_includes = includes,
+    )
+    
+    # we need to provide the following sdk component to the netxdrv component. 
+    bld.sdkcomponent(
+        name            = "netx_drv_configuration_sdk",
+        export_includes = includes,
+    )

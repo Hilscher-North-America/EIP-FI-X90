@@ -1,0 +1,6 @@
+def build(bld):
+
+    bld.sdkcomponent(
+        name            = "hostabstractionlayer_sdk",
+        export_includes = "Includes",
+        )

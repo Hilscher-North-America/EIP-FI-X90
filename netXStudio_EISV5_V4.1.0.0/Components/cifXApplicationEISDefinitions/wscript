@@ -1,0 +1,53 @@
+def build(bld):
+
+# Component cifXApplicationEthernetIFDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "EthernetIFDefinitions_sdk",
+        export_includes = "Includes/EthernetIF_API",
+        )
+
+# Component cifXApplicationGenericAPDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "GenericAPDefinitions_sdk",
+        export_includes = "Includes\GenericAP_API",
+        )
+
+
+# Component cifXApplicationHilscherDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "Hil_Definition_netXFirmware_sdk",
+        export_includes = "Includes/HilscherDefinitions",
+        )
+    
+
+# Component cifXApplicationEIPDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "EIPDefinitions_sdk",
+        export_includes = "Includes/EIP_API",
+        )
+
+# Component cifXApplicationSocketDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "SocketDefinitions_sdk",
+        export_includes = "Includes/Socket_API",
+        )
+
+# Component cifXApplicationWebIFDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "WebIFDefinitions_sdk",
+        export_includes = "Includes/WebIF_API",
+        )
+
+
+# Component cifXApplicationAuthMgrDefinitions ----------------------------------------------
+    
+    bld.sdkcomponent(
+        name            = "AuthMgrDefinitions_sdk",
+        export_includes = "Includes/AuthManager_API",
+        )

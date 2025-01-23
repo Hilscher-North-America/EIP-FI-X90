@@ -1,0 +1,4 @@
+netX Studio - EIS V5
+
+V4.1.0.0
+Compatible with EtherNet/IP LFW V5.4.0.x

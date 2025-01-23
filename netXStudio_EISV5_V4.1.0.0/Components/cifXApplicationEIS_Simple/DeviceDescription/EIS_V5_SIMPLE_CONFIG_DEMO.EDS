@@ -1,0 +1,192 @@
+$ EZ-EDS Version 3.29.1.20210209 Generated Electronic Data Sheet
+
+$ ****************************************************************************
+$  
+$ ATTENTION:
+$  
+$  Changes in this file can cause configuration or communication problems.
+$  
+$ ****************************************************************************
+$  
+$ Changes:
+$  
+$  Version  Date       Name   Description
+$ -------------------------------------------------------------------------
+$  1.3      07.12.2021 NA     - Removed [SNMP Class] section
+$  
+$  1.2      29.03.2021 NA     - Added [LLDP Management Class] section
+$                             - Added [SNMP Class] section
+$  
+$  1.1      07.10.2019 NA     - Added [QoS Class] section
+$  
+$  1.0      17.01.2019 NA     - created
+$  
+$ ****************************************************************************
+
+[File]
+        DescText = "EDS-File for EtherNet/IP Adapter Simple Config Demo Application";
+        CreateDate = 01-17-2019;
+        CreateTime = 10:00:00;
+        ModDate = 12-07-2021;
+        ModTime = 16:28:01;
+        Revision = 1.3;
+        HomeURL = "www.hilscher.com";
+
+
+[Device]
+        VendCode = 283;
+        VendName = "Hilscher GmbH";
+        ProdType = 12;
+        ProdTypeStr = "Communications Adapter";
+        ProdCode = 770;
+        MajRev = 1;
+        MinRev = 1;
+        ProdName = "EIS_V5_SIMPLE_CONFIG_DEMO";
+
+[Device Classification]
+        Class1 = EtherNetIP;
+
+
+[Params]
+        Param1 =
+                0,
+                ,,
+                0x0010,
+                0xC7,
+                2,
+                "Produced Data",
+                "",
+                "",
+                0,255,0,
+                ,,,,
+                ,,,,
+                0;
+        Param2 =
+                0,
+                ,,
+                0x0000,
+                0xC7,
+                2,
+                "Consumed Data",
+                "",
+                "",
+                0,255,0,
+                ,,,,
+                ,,,,
+                0;
+
+[Assembly]
+        Object_Name = "Assembly Object";
+        Object_Class_Code = 0x04;
+        Assem100 =
+                "Consuming Assembly (O2T)",
+                ,
+                6,
+                0x0000,
+                ,,
+                16,Param2,
+                16,Param2,
+                16,Param2;
+
+
+        Assem101 =
+                "Producing Assembly (T2O)",
+                ,
+                10,
+                0x0000,
+                ,,
+                16,Param1,
+                16,Param1,
+                16,Param1,
+                16,Param1,
+                16,Param1;
+
+[Connection Manager]
+        Object_Name = "Connection Manager Object";
+        Object_Class_Code = 0x06;
+        Connection1 =
+                0x04010002,             $ Trigger and Transport
+                0x44640405,             $ Point Multicast
+                ,,Assem100,             $ OT RPI Size format
+                ,,Assem101,             $ TO rpi size format
+                ,,                      $ config 1
+                ,,                      $ config 2
+                "Exclusive Owner ",     $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C 64 2C 65";    $ path
+
+        Connection2 =
+                0x01010002,             $ Trigger and Transport
+                0x44240305,             $ Point Multicast
+                ,0,,                    $ OT RPI Size format
+                ,,Assem101,             $ TO rpi size format
+                ,,                      $ config 1
+                ,,                      $ config 2
+                "Listen Only",          $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C C0 2C 65";    $ path
+
+        Connection3 =
+                0x02010002,             $ Trigger and Transport
+                0x44640305,             $ Point Multicast
+                ,0,,                    $ OT RPI Size format
+                ,,Assem101,             $ TO rpi size format
+                ,,                      $ config 1
+                ,,                      $ config 2
+                "Input Only",           $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C C1 2C 65";    $ path
+
+[Capacity]
+        ConnOverhead = .004;            $ Connection Overhead
+
+        MaxIOConnections = 3;           $ Maximum number of Class 1 Connections
+        MaxMsgConnections = 6;          $ Maximum number of Class 3 Connections
+        TSpec1 = TxRx, 10, 2000;        $ packets per sec @ 10 bytes
+        TSpec2 = TxRx, 504, 1500;       $ packets per sec @ 504 bytes
+
+[DLR Class]
+        Revision = 3;
+        Object_Name = "Device Level Ring Object";
+        Object_Class_Code = 0x47;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+[TCP/IP Interface Class]
+        Revision = 4;
+        Object_Name = "TCP/IP Interface Object";
+        Object_Class_Code = 0xF5;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+[Ethernet Link Class]
+        Revision = 4;
+        Object_Name = "Ethernet Link Object";
+        Object_Class_Code = 0xF6;
+        MaxInst = 2;
+        Number_Of_Static_Instances = 2;
+        Max_Number_Of_Dynamic_Instances = 0;
+        InterfaceLabel1 = "Port1";
+        InterfaceLabel2 = "Port2";
+
+[QoS Class]
+        Revision = 1;
+        Object_Name = "QoS Object";
+        Object_Class_Code = 0x48;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+[LLDP Management Class]
+        Revision = 1;
+        Object_Name = "LLDP Management Object";
+        Object_Class_Code = 0x109;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+$ ****************************************************************************
+$ EOF
+$ ****************************************************************************
