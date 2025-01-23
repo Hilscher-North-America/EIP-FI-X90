@@ -14,22 +14,28 @@
 #define TERM_PRINTF printf
 #endif
 
-#define SHELL_CMDS \
+#define SHELL_NVRAM_CMDS \
+  {"----- nvram commands \x01-------------------------", NULL, NULL, "" }, \
   {"app_ctrl" , NULL , Shell_AppControl, "<0> Shell <1> APP (re)assign ownership of io expander i2c events"}, \
   {"bipsave"  , NULL , shell_baseipsave,       "<ip> Changes first 3 octets of IP address" }, \
   {"ipsave"   , NULL , ipsave,           "<ip> <mask> <gateway> Set IP address, mask and gateway"}, \
-  {"link"     , NULL , link,             "Show Ethernet parameters"}, \
   {"f0"       , NULL , Shell_FileSystemInit, "Full format the default partition of the target file system"}, \
   {"l"        , NULL , Shell_FileSystemList, "List Directories and Files from File System"}, \
   {"nvdata"   ,	NULL , Shell_FileSystemShow, "Show NV data" }, \
   {"nvsave"   ,	NULL , Shell_FileSystemSave, "Save NV data" }, \
   {"nvdel"    ,	NULL , Shell_FileSystemDel, "Delete NV data" }, \
+
+#define SHELL_LINK_CMDS \
+  {"link"     , NULL , link,             "Show Ethernet parameters"}, \
+
+#define SHELL_TEMP_CMDS \
   {"temp"     ,	NULL , Shell_Temp, "Display netX Temperature" }, \
   {"temp_i"   ,	NULL , Shell_TempIntercept, "[<intercept>] Show or Save Temperature line intercept parameter" }, \
   {"temp_s"   ,	NULL , Shell_TempSlope, "[<slope>] Show or Save Temperature line slope parameter" }, \
   
 #ifdef  DIAG_MODE
 #define DIAG_CMDS \
+  {"----- diag commands \x01--------------------------", NULL, NULL, "" }, \
   {"d" , NULL , Show_Diag, "Show FW diagnostics"}, \
   {"c" , NULL , Clear_Diag, "Clear FW diagnostics"}, \
 

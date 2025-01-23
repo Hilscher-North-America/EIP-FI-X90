@@ -22,6 +22,7 @@ Copyright (c) Hilscher Gesellschaft fuer Systemautomation mbH. All Rights Reserv
 #include <stdio.h>
 
 #include "AppEIS_Application.h"
+#include "AppEIS_Application_Config.h"
 #include "App_Application.h"
 #include "App_PacketCommunication.h"
 #include "App_SystemPackets.h"
@@ -572,11 +573,6 @@ uint32_t AppEIS_ConfigureStack( APP_DATA_T* ptAppData )
 {
   uint32_t ulRet = CIFX_NO_ERROR;
   uint32_t ulIdx;
-
-  /* bring everything to a defined (rebooted) state */
-  ulRet = AppEIS_ChannelInit(ptAppData);
-  if ( (ulRet != 0) && (ulRet != ERR_HIL_NOT_CONFIGURED) ) /* no configuration available is accepted and not an error */
-    return ulRet;
 
   /* register all assemblies */
   for (ulIdx = 0; ulIdx < s_ulCipAssemblyDirEntries; ulIdx++)

@@ -36,6 +36,7 @@ bool SWITCH_update(void);
 ///////////////////////////////////////////////////////////////////////////
 
 #define SWITCH_SHELL_CMDS \
+  {"----- HAL commands \x01---------------------------", NULL, NULL, "" }, \
   {"switches" , NULL , Shell_ReadSwitchValues , "Read memory switch values"}, \
   {"read_rs" , NULL , Shell_Rotary_update_switches , "Read physical switch values"}, \
 

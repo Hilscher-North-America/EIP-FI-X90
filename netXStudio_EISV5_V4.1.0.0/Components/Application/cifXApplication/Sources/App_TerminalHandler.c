@@ -52,12 +52,13 @@ static uint32_t Term_ResetCommand(char* szCommandName);
 static uint32_t Term_ReadInputCommand(char* szCommandName);
 static uint32_t Term_WriteOutputCommand(char* szCommandName);
 
-APP_TERMINAL_CMD_HANDLER_T  g_ShellCommands[] = {
+static APP_TERMINAL_CMD_HANDLER_T  g_ShellCommands[] = {
+  {"----- netX commands \x01--------------------------", NULL, NULL, "" }, \
   {"ls"       , Term_ListShellCommands , NULL            , "list all MKS commands" },
   {"reset"    , Term_ResetCommand      , NULL            , "Reset the netX chip" },
   {"cord"     , Term_ReadInputCommand  , NULL            , "Read input values" },
   {"cowr"     , Term_WriteOutputCommand, NULL            , "Write output values" },
-  {"version"  , NULL                   , Term_VersionInfo, "display FW version and build information" },
+  {"version"  , NULL                   , Term_VersionInfo, "display FW version and build information" },  
   HAL_SHELL_CMDS
 };
 
@@ -160,7 +161,7 @@ uint32_t Term_ListShellCommands( char *strCmdBuffer)
     TERM_PRINTF(LIST_FORMATTING, g_ShellCommands[ idx ].cmd , g_ShellCommands[ idx ].cmd_desc);
   }
 
-   return 0;
+  return 0;
 }
 
 /***************************************************************************************
