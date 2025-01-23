@@ -1,0 +1,18 @@
+# Object files
+*.o
+
+# Library files
+*.a
+
+# Python scripts
+*.py
+*.pyc
+
+*.elf
+*.lock-waf_win32_build
+*.log
+*.map
+*.nai
+*.wafpickle-98
+*.nai.unpatched
+hwconfig_build.xml

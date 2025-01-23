@@ -38,7 +38,7 @@ Copyright (c) Hilscher Gesellschaft fuer Systemautomation mbH. All Rights Reserv
  Enable this macro will forward store remanent data indications, when the host app
  shall handle the remanent data.
 *************************************************************************************/
-//#define HOST_APPLICATION_STORES_REMANENT_DATA
+#define HOST_APPLICATION_STORES_REMANENT_DATA
 
 /*************************************************************************************
  Enable this macro allows to simulate rotary switches via terminal handler. For details
